@@ -38,6 +38,3 @@ alter table student modify column id int not null auto_increment;
 insert into student(name,age,country,gender) value ("Đạt",30,"Việt Nam","male");
 alter table student add test int;
 alter table student drop test;
-
-
-
