@@ -183,3 +183,11 @@ value
 ('2021-04-12', '2021-04-14', 0, 10, 3, 5),
 ('2021-04-25', '2021-04-25', 0, 2, 2, 1),
 ('2021-05-25', '2021-05-27', 0, 7, 10, 1);
+use furama_management;
+select k.id , k.name , l.name , h.id , count(h.id) as so_lan_dat_phong
+from customer k
+join customer_type l on k.id = l.id
+join contract h on k.id = h.id
+where l.name ='Diamond'
+group by h.id
+order by so_lan_dat_phong;
