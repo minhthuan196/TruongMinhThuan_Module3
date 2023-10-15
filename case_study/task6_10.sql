@@ -43,5 +43,19 @@ where c.id not in (
 );
 -- 9. Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2021
 -- thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng
+select month(c.contract_start_date) as `month`,count(month(c.contract_start_date)) as total_customer
+from contract c
+where (year(c.contract_start_date) = 2021)
+group by month(c.contract_start_date)
+order by month(c.contract_start_date);
+-- 10. Hiển thị thông tin tương ứng với từng hợp đồng thì đã sử dụng bao nhiêu dịch vụ đi kèm.
+-- Kết quả hiển thị bao gồm ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, so_luong_dich_vu_di_kem
+-- (được tính dựa trên việc sum so_luong ở dich_vu_di_kem).
+SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+select c.id, c.contract_start_date, c.contract_end_date, c.deposits, ifnull(sum(dc.quantity),0) as total_accompanied_service
+from contract c
+left join detail_contract dc on dc.contract_id = c.id
+left join accompanied_service acs on acs.id = dc.accompanied_service_id
+group by c.id;
 
 
