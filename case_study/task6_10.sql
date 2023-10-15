@@ -43,7 +43,7 @@ where c.id not in (
 );
 -- 9. Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2021
 -- thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng
-select month(c.contract_start_date) as `month`,count(month(c.contract_start_date)) as total_customer
+select month(c.contract_start_date) as `month`,count(c.id) as total_customer
 from contract c
 where (year(c.contract_start_date) = 2021)
 group by month(c.contract_start_date)
