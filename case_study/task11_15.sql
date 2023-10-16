@@ -48,7 +48,7 @@ join type_service ts on ts.id = sv.type_service_id
 join detail_contract dc on dc.contract_id = ctr.id
 join accompanied_service acs on acs.id = dc.accompanied_service_id
 group by dc.accompanied_service_id
-having count(dc.accompanied_service_id) = 1
+having count(dc.accompanied_service_id) = 1;
 -- 15. Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do,
 -- ten_bo_phan, so_dien_thoai, dia_chi mới chỉ lập được tối đa 3 hợp đồng từ năm 2020 đến 2021.
 select s.id, s.name, l.name as levels, p.name as parts, s.phone, s.address
@@ -57,7 +57,7 @@ join parts p on p.id = s.parts_id
 join levels l on l.id = s.levels_id
 join contract c on c.staffs_id = s.id
 group by c.staffs_id
-having count(c.staffs_id) <=3
+having count(c.staffs_id) <=3;
 
 
 
