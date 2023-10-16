@@ -57,7 +57,7 @@ join parts p on p.id = s.parts_id
 join levels l on l.id = s.levels_id
 join contract c on c.staffs_id = s.id
 group by c.staffs_id
-having count(c.staffs_id) <3
+having count(c.staffs_id) <=3
 
 
 
