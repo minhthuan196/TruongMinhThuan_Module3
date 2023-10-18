@@ -24,9 +24,9 @@ address varchar(45) not null,
 positions_id int not null,
 levels_id int not null,
 parts_id int not null,
-foreign key (positions_id) references positions(id),
-foreign key (levels_id) references levels(id),
-foreign key (parts_id) references parts(id)
+foreign key (positions_id) references positions(id) on delete cascade on update cascade,
+foreign key (levels_id) references levels(id) on delete cascade on update cascade,
+foreign key (parts_id) references parts(id) on delete cascade on update cascade
 );
 create table customer_type(
 id int primary key auto_increment,
@@ -42,7 +42,7 @@ phone varchar(10) check (length(phone) = 10) not null unique,
 email varchar(45) not null unique,
 address varchar(45) not null,
 customer_type_id int not null,
-foreign key (customer_type_id) references customer_type(id)
+foreign key (customer_type_id) references customer_type(id) on delete cascade on update cascade
 );
 create table accompanied_service(
 id int primary key auto_increment,
@@ -72,8 +72,8 @@ number_floors int check(number_floors >=0),
 accompanied_free_servicee text ,
 rental_type_id int not null,
 type_service_id int not null,
-foreign key (rental_type_id) references rental_type(id),
-foreign key (type_service_id) references type_service(id)
+foreign key (rental_type_id) references rental_type(id) on delete cascade on update cascade,
+foreign key (type_service_id) references type_service(id) on delete cascade on update cascade
 );
 create table contract(
 id int primary key auto_increment,
@@ -83,9 +83,9 @@ deposits double not null check(deposits>=0),
 staffs_id int not null,
 customer_id int not null,
 service_id int not null,
-foreign key (staffs_id) references staffs(id),
-foreign key (customer_id) references customer(id),
-foreign key (staffs_id) references staffs(id)
+foreign key (staffs_id) references staffs(id) on delete cascade on update cascade,
+foreign key (customer_id) references customer(id) on delete cascade on update cascade,
+foreign key (staffs_id) references staffs(id) on delete cascade on update cascade
 );
 create table detail_contract(
 id int primary key auto_increment,
@@ -93,6 +93,6 @@ quantity int not null,
 contract_id int not null,
 accompanied_service_id int not null,
 unique(contract_id,accompanied_service_id),
-foreign key (contract_id) references contract(id),
-foreign key (accompanied_service_id) references accompanied_service(id)
+foreign key (contract_id) references contract(id) on delete cascade on update cascade,
+foreign key (accompanied_service_id) references accompanied_service(id) on delete cascade on update cascade
 );
