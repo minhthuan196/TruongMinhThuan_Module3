@@ -26,7 +26,7 @@ with get_id_customer as(
     )
 update customer
 set customer_type_id = 1
-where id = (select id from get_id_customer);
+where id in (select id from get_id_customer);
 -- 18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
 with get_id_customer as(
 	select c.id

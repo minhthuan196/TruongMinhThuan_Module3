@@ -3,7 +3,10 @@ use furama_management;
 -- có tên bắt đầu là một trong các ký tự “H”, “T” hoặc “K” và có tối đa 15 kí tự
 select *
 from staffs
-where ((name like 'H%') or (name like 'T%') or( name like 'K%')) and (char_length(name) <=15);
+where (substring_index(name," ",-1) like 'H%')
+or (substring_index(name," ",-1) like 'T%')
+or (substring_index(name," ",-1) like 'K%')
+ and (char_length(name) <=15);
 -- 3. Hiển thị thông tin của tất cả khách hàng có độ tuổi từ 18 đến 50 tuổi
 -- và có địa chỉ ở “Đà Nẵng” hoặc “Quảng Trị”
 select *
@@ -24,7 +27,7 @@ order by total_order;
 -- (Với tổng tiền được tính theo công thức như sau: Chi Phí Thuê + Số Lượng * Giá, 
 -- với Số Lượng và Giá là từ bảng dich_vu_di_kem, hop_dong_chi_tiet) cho tất cả các khách hàng đã từng đặt phòng
 -- (những khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra)
-SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+set sql_mode=(select replace(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 select c.id,c.name as name_customer,ct.name as name_customer_type,ctr.id as contract_id,
 s.name as name_service,ctr.contract_start_date,ctr.contract_end_date,
 (ifnull(s.rental_costs,0) + ifnull(dc.quantity,0) * ifnull(acs.price,0)) as total_price
