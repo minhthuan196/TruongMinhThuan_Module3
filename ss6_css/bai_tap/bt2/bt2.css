@@ -1,0 +1,29 @@
+div {
+    font-family: "Times New Roman", serif;
+    font-size: large;
+}
+
+.bold {
+    font-weight: bold
+}
+
+a {
+    text-decoration: none;
+}
+
+.p1, .p2, .p3 {
+    text-indent: 50px;
+    text-align: justify;
+}
+
+h1 {
+    line-height: 1px;
+}
+
+.t1 {
+    line-height: 1px;
+}
+
+sup {
+    color: blue;
+}
