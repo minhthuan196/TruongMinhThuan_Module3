@@ -27,3 +27,6 @@ h1 {
 sup {
     color: blue;
 }
+.space{
+    word-spacing: 10px;
+}
