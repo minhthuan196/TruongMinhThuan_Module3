@@ -18,6 +18,9 @@
         button {
             padding: 10px;
         }
+        h3{
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
