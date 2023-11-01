@@ -69,7 +69,7 @@
                 <a href="#" data-bs-toggle="modal" data-bs-target="#xoa1" onclick="modal(${user.id})">Delete</a>
             </td>
         </tr>
-    </c:forEach>s
+    </c:forEach>
 </table>
 <div class="modal" tabindex="-1" id="xoa1">
     <div class="modal-dialog modal-dialog-centered">
