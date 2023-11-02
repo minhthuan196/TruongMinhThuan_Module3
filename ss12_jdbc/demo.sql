@@ -50,3 +50,26 @@ create table Employee (
             created_Date datetime, 
             PRIMARY KEY (id) 
 );
+delimiter //
+create procedure show_list_user()
+begin
+select * from users;
+end //
+delimiter ;
+call show_list_user;
+delimiter //
+create procedure delete_user(inputId int)
+begin
+delete from users where id = inputId;
+end //
+delimiter ;
+call delete_user(18);
+delimiter //
+create procedure update_user(inputId int,inputName varchar(120),inputEmail varchar(220), inputCountry varchar(120))
+begin
+update users
+set name = inputName,email =inputEmail,country = inputCountry
+where id = inputId;
+end //
+delimiter ;
+call update_user(11,"quyen","quyen123@gmail.com","vn");
