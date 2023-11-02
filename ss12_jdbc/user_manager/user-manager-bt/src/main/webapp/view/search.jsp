@@ -37,6 +37,11 @@
 <h2>
     <a href="/users">Back List User</a>
 </h2>
+<form action="/users">
+    <input type="text" name="action" hidden="hidden" value="search">
+    <input name="country" type="text" placeholder="Enter country">
+    <button type="submit">Search</button>
+</form>
 <h2>List of Users</h2>
 <table border="1" cellpadding="5">
     <tr>

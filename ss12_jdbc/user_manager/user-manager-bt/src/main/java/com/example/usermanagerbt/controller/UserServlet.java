@@ -75,7 +75,7 @@ public class UserServlet extends HttpServlet {
     private void searchUserByCountry(HttpServletRequest request, HttpServletResponse response) {
         String country = request.getParameter("country");
         List<User> userList = userService.selectAllUserByCountry(country);
-        request.setAttribute("country", country);
+        //request.setAttribute("country", country);
         request.setAttribute("userList", userList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/search.jsp");
         try {

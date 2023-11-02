@@ -106,17 +106,18 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public List<User> selectAllUserByCountry(String country) {
+    public List<User> selectAllUserByCountry(String keyword) {
         List<User> userList = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USER_BY_COUNTRY);
-            preparedStatement.setString(1, country);
+            preparedStatement.setString(1, "%" + keyword + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String email = resultSet.getString("email");
+                String country = resultSet.getString("country");
                 userList.add(new User(id, name, email, country));
             }
         } catch (SQLException e) {
